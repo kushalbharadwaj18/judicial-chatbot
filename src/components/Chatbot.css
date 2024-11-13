@@ -1,0 +1,27 @@
+.chatbot-icon {
+	width: 70px;
+	height: 70px;
+	border-radius: 100%;
+	text-align: center;
+	margin-top: 15px;
+	padding: 10px;
+	position: fixed;
+    right: 20px;
+	bottom: 10px;
+	cursor: pointer;
+}
+.chatbot-text {
+	text-align: center;
+	margin-top: 30px;
+	padding: 10px;
+	position: fixed;
+	bottom: 50px;
+    right: 97px;
+	/* color: rgb(253, 3, 57); */
+	color: white;
+	background-color: black;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	font-family: Arial;
+}

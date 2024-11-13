@@ -1,0 +1,23 @@
+@media (min-width: 600px) {	
+	.images-div {
+		display: flex;
+		justify-content: space-between;
+		padding: 20px;
+	}
+}
+@media (min-width: 0px) and (max-width: 600px) {
+	.web-images {
+		display: none;
+	}
+}
+.image-title {
+	font-family: Arial;
+	margin-left: 10px;
+	margin-top: 15px;
+}
+.embelem-image {
+	display: flex;
+} 
+header {
+	background-color: white;
+}

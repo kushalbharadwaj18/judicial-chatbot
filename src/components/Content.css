@@ -1,0 +1,10 @@
+.heading {
+	font-family: Arial;
+	text-align: center;
+}
+.about-content {
+	color: rgb(112, 107, 107);
+	font-family: sans-serif;
+	margin: auto;
+	padding: 10px 10px;
+}
