@@ -25,7 +25,7 @@ The chatbot should preferably learn from interactions to enhance user
 <br>
 experiences and handle large datasets as the scope expands.
 <br>
-commands to run:
+<b>commands to run</b>:
 <br>
 open terminal
 <br>
