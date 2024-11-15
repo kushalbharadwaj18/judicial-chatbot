@@ -1,6 +1,7 @@
 .heading {
 	font-family: Arial;
 	text-align: center;
+	margin-top: 50px;
 }
 .about-content {
 	color: rgb(112, 107, 107);
@@ -8,3 +9,34 @@
 	margin: auto;
 	padding: 10px 10px;
 }
+.additional-images {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	flex-wrap: wrap;
+	background-color: white;
+}
+.additional-image {
+	border: 1px solid lightgrey;
+	padding: 5px 0px;
+	text-align: center;
+}
+@media (max-width: 1000px) {
+	.additional-images {
+	  grid-template-columns: 1fr 1fr; /* 2 columns */
+	}
+  }
+  
+  /* Larger devices (e.g., desktops) */
+  /* @media (min-width: 1024px) {
+	.additional-images {
+	  grid-template-columns: 1fr 1fr 1fr; 3 columns
+	}
+  } */
+/*   
+Extra-large devices (e.g., large desktops) 
+  @media (min-width: 1440px) {
+	.additional-images {
+	  grid-template-columns: 1fr 1fr 1fr 1fr; 4 columns
+	}
+  } 
+*/

@@ -1,27 +1,78 @@
-.chatbot-icon {
-	width: 70px;
-	height: 70px;
-	border-radius: 100%;
-	text-align: center;
-	margin-top: 15px;
-	padding: 10px;
-	position: fixed;
-    right: 20px;
-	bottom: 10px;
-	cursor: pointer;
+.chatbot-container {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
 }
-.chatbot-text {
-	text-align: center;
-	margin-top: 30px;
-	padding: 10px;
-	position: fixed;
-	bottom: 50px;
-    right: 97px;
-	/* color: rgb(253, 3, 57); */
-	color: white;
-	background-color: black;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	border-bottom-left-radius: 10px;
-	font-family: Arial;
+
+.sidebar {
+    width: 15%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 5px 0;
+    color: #555;
+}
+
+.chatbox {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures the space is distributed evenly */
+    height: 100%; /* Full height of the container */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-top: auto; /* Pushes the search bar to the bottom */
+    margin-bottom: 120px; /* Creates space between the search bar and the bottom */
+}
+
+.search-bar input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    width: 15%;
+    margin-left: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    color: white;
+    background-color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+.response {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }

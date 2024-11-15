@@ -1,110 +1,32 @@
-.footer {
-	background-color: #1a4178;
+.words-div {
+	padding: 5px 10px;
+    background-color: rgb(71, 65, 65);
+}
+.p-words {
 	color: white;
-	padding: 2rem 0;
-	width: 100%;
-  }
-  
-  .container {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 1rem;
-  }
-  
-  /* Logo Section Styles */
-  .logo-section {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	gap: 2rem;
-	margin-bottom: 2rem;
-	padding: 1rem 0;
-  }
-  
-  .logo-section img {
-	height: 48px;
-	width: auto;
-	transition: transform 0.3s ease;
-  }
-  
-  .logo-section img:hover {
-	transform: scale(1.05);
-  }
-  
-  /* Links Section Styles */
-  .links-section {
 	text-align: center;
-	font-size: 0.875rem;
-	margin-bottom: 2rem;
-  }
-  
-  .footer-link {
-	color: white;
-	text-decoration: none;
-	padding: 0.25rem 0.5rem;
-	transition: all 0.3s ease;
-	position: relative;
-  }
-  
-  .footer-link:hover {
-	color: #ffd700;
-  }
-  
-  .footer-link::after {
-	content: '';
-	position: absolute;
-	width: 0;
-	height: 1px;
-	bottom: 0;
-	left: 50%;
-	background-color: #ffd700;
-	transition: all 0.3s ease;
-  }
-  
-  .footer-link:hover::after {
-	width: 80%;
-	left: 10%;
-  }
-  
-  .footer-divider {
-	margin: 0 0.5rem;
-	color: rgba(255, 255, 255, 0.6);
-  }
-  
-  /* Copyright Section Styles */
-  .copyright-section {
-	text-align: center;
-	font-size: 0.75rem;
-	line-height: 1.5;
-	color: rgba(255, 255, 255, 0.9);
-	padding-top: 1.5rem;
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .copyright-section p {
-	margin: 0.5rem 0;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-	.logo-section {
-	  gap: 1.5rem;
-	}
-	
-	.logo-section img {
-	  height: 40px;
-	}
-	
-	.links-section {
-	  font-size: 0.8rem;
-	}
-	
-	.footer-divider {
-	  margin: 0 0.25rem;
-	}
-	
-	.copyright-section {
-	  font-size: 0.7rem;
-	}
-  }
+	font-family: sans-serif;
+}
+.content-wrapper {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+.content-text {
+    margin-bottom: 10px;
+    font-size: 14px;
+	font-family: Arial;
+}
+
+.logo {
+    width: 100px; /* Adjust width as needed */
+    margin: 10px;
+}
+
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

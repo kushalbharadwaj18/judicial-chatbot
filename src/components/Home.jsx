@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import SlidingImages from './SlidingImages';
 import Footer from './Footer';
-import Chatbot from './Chatbot';
+import ChatbotIcon from './ChatbotIcon';
 import Content from './Content';
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
 	   <Header />
 	   <SlidingImages />
 	   <Content />
-	   <Chatbot />
+	   <ChatbotIcon />
 	   <Footer />
 	</div>
   )
