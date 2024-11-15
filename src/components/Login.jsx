@@ -7,7 +7,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setEmailError('');
         setPasswordError('');
@@ -21,8 +21,20 @@ const Login = () => {
             valid = false;
         }
         if (valid) {
-            console.log('Login successful with:', { email, password });
-            navigate('/chatbot');
+            const response = await fetch('http://127.0.0.1:5000/login', {
+                method: 'POST',
+                body: JSON.stringify({ email, password }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+            if (response.status != 200) {
+                alert(data.message);
+            }
+            else {
+                navigate('/chatbot');
+            }
         }
     };
     return (

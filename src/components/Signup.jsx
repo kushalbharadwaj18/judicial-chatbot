@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css'; 
 import './Style.css';
 const Signup = () => {
     const navigate = useNavigate();
@@ -11,7 +13,7 @@ const Signup = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setNameError('');
         setEmailError('');
@@ -35,8 +37,21 @@ const Signup = () => {
             valid = false;
         }
         if (valid) {
-            console.log('Signup successful with:', { name, email, password });
-            navigate('/login');
+            // console.log('Signup successful with:', { name, email, password });
+            const response = await fetch('http://127.0.0.1:5000/signup', {
+                method: 'POST',
+                body: JSON.stringify({ name, email, password }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (response.status != 200) {
+                const data = await response.json();
+                alert(data.message);
+            }
+            else {
+                navigate('/login');
+            }
         }
     };
     return (
