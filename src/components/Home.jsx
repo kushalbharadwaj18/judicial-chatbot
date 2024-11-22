@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from './Header';
 import SlidingImages from './SlidingImages';
 import Footer from './Footer';
@@ -15,5 +15,4 @@ const Home = () => {
 	</div>
   )
 }
-
 export default Home

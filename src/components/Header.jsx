@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import AppContext from '../AppContext';
 const Header = () => {
+  const { user } = useContext(AppContext)  
+  const [option, setOption] = useState(() => {
+    if (user === null) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  });
   return (
 	<header>
 	  <div className="images-div">
@@ -19,34 +29,16 @@ const Header = () => {
 	  </div>
 	  <div>
 	</div>
-	<nav class="navbar">
-            <ul>
-                <li><Link to="#"><b>Home</b></Link></li>
-                <li><Link to="#"><b>About Us</b></Link>
-				   {/*
-                    <ul class="dropdown">
-                        <li><Link to="#">History</Link></li>
-                        <li><Link to="#">About Department</Link></li>
-                        <li><Link to="#">Vision and Mission</Link></li>
-                        <li><Link to="#">Functions of Department</Link></li>
-                        <li><Link to="#">Organization Chart</Link></li>
-                        <li><Link to="#">Administrative Setup</Link></li>
-                        <li><Link to="#">Who's Who</Link></li>
-                        <li><Link to="#">Monthly Achievements</Link></li>
-                        <li><Link to="#">Citizens’ Charter</Link></li>
-                        <li><Link to="#">Acts and Rules</Link></li>
-                        <li><Link to="#">Website Information Manager</Link></li>
-                    </ul>
-					*/}
-                </li>
-                <li><Link to="#"><b>Administration of Justice</b></Link></li>
-                <li><Link to="#"><b>National Mission</b></Link></li>
-                <li><Link to="#"><b>eCourts MMP</b></Link></li>
-                <li><Link to="#"><b>Access to Justice</b></Link></li>
-                <li><Link to="#"><b>Samvidhan@75</b></Link></li>
-                <li><Link to="#"><b>Media Corner</b></Link></li>
-            </ul>
-        </nav>
+  {option ?
+        <nav className="navbar">
+          <div>
+            <Link to="/login" className="login-link">Log in</Link>
+          </div>
+          <div>
+            <Link to="/signup" className="signup-link">Sign up</Link>
+          </div>
+    </nav>
+    : <nav className="navbar"><img src="http://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" width="50" height="50" className="profile-image"/> <span className="username">{ user }</span></nav>}
 	</header>
   )
 }

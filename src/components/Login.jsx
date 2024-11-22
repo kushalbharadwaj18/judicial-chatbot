@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import AppContext from '../AppContext';
 import './Style.css';
 const Login = () => {
+    const { setUser } = useContext(AppContext);
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -33,14 +35,16 @@ const Login = () => {
                 alert(data.message);
             }
             else {
-                navigate('/chatbot');
+                localStorage.setItem("token", data.access_token);
+                setUser(data.name);
+                navigate('/');
             }
         }
     };
     return (
-        <div className="auth-container"> {/* Apply auth-container class here */}
+        <div className="auth-container">
             <div className="form-box">
-                <h2>Login</h2>
+                <h2 style={{"color": "white"}}>Login</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="input-box">
                         <label>Email</label>

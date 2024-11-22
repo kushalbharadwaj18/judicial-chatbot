@@ -57,7 +57,7 @@ const Signup = () => {
     return (
         <div className="auth-container"> {/* Apply auth-container class here */}
             <div className="form-box">
-                <h2>Sign Up</h2>
+                <h2 style={{"color": "white"}}>Sign Up</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="input-box">
                         <label>Name</label>

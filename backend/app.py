@@ -1,16 +1,19 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+load_dotenv()
 app = Flask(__name__)
 CORS(app)
 bcrypt = Bcrypt(app)
-app.config['JWT_SECRET_KEY'] = 'kushalkhadarrahulbalajicharanlaxman'
+app.config['JWT_SECRET_KEY'] = os.getenv('SECRET_KEY')
 jwt = JWTManager(app)
-client = MongoClient("mongodb+srv://kushalbharadwaj68:0Zmd8OKBYNwOELmO@cluster0.hhwxk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-db = client['judicialchatbot']
-collection = db['users']
+client = MongoClient(os.getenv("MONGO_URL"))
+db = client[os.getenv("DATABASE")]
+collection = db[os.getenv("COLLECTION1")]
 @app.route('/signup', methods=['POST'])
 def api():
     data = request.get_json()
@@ -37,7 +40,7 @@ def login():
     if not bcrypt.check_password_hash(user['password'], password):
         return jsonify({ "message": "Invalid email or password" }), 401
     access_token = create_access_token(identity=email)
-    return jsonify({ "message": "Login successful", "access_token": access_token }), 200
+    return jsonify({ "message": "Login successful", "access_token": access_token, "name": user['name'] }), 200
 @app.route('/protected', methods=['GET'])
 @jwt_required()
 def protected():

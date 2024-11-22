@@ -8,6 +8,7 @@
 	font-family: sans-serif;
 	margin: auto;
 	padding: 10px 10px;
+	line-height: 1.8;
 }
 .additional-images {
 	display: grid;

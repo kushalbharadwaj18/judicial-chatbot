@@ -76,3 +76,45 @@
     border-radius: 5px;
     background-color: #f9f9f9;
 }
+
+.h1-user {
+    padding: 10px 10px;
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    cursor: pointer;
+}
+.user {
+    color: white;
+    background-color: rgb(23, 23, 142);
+    padding: 10px 15px;
+    border-radius: 90%;
+}
+nav {
+    padding: 10px 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.login-link {
+    margin-left: 20px;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 7px 20px;
+    border-radius: 50px;
+    color: white;
+    /* background-color: rgb(154, 152, 152); */
+    background-color: black;
+    font-weight: bold;
+}
+.signup-link {
+    margin-left: 20px;
+    text-decoration: none;
+    border: 1px solid lightgrey;
+    padding: 7px 20px;
+    border-radius: 50px;
+    color: black;
+    background-color: white;
+    /* background-color: rgb(247, 127, 8); */
+    font-weight: bold;
+}
