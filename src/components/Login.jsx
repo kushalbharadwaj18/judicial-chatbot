@@ -36,6 +36,7 @@ const Login = () => {
             }
             else {
                 localStorage.setItem("token", data.access_token);
+                localStorage.setItem("user", JSON.stringify(data.name));
                 setUser(data.name);
                 navigate('/');
             }

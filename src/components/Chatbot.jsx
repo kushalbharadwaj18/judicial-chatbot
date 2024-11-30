@@ -1,118 +1,149 @@
-import React, { useState, useEffect, useContext } from 'react';
-import AppContext from '../AppContext';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Chatbot.css';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-const Chatbot = (props) => {
+import AppContext from "../AppContext";
+import { Link } from "react-router-dom";
+const Chatbot = () => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [messages, setMessages] = useState([]);
+    const [inputValue, setInputValue] = useState('');
+    const [chatHistory, setChatHistory] = useState([]);
+    const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const { user, setUser } = useContext(AppContext);
-    const [query, setQuery] = useState('');
-    const [queryHistory, setQueryHistory] = useState([]);
-    const [response, setResponse] = useState('');
-    const [isHovered, setHovered] = useState(false);
-    const Navigate = useNavigate();
-    const handleSearch = () => {
-        if (query.trim()) {
-            setQueryHistory([...queryHistory, query]);
-            setResponse(`Response to "${query}"`);
-            setQuery('');
+    const navigate = useNavigate(); // Initialize the navigate function
+
+    const handleSend = () => {
+        if (inputValue.trim()) {
+            const newMessages = [
+                ...messages,
+                { type: 'user', text: inputValue },
+                { type: 'bot', text: `Response to: ${inputValue}` }
+            ];
+
+            setMessages(newMessages);
+            setChatHistory([...chatHistory, inputValue]);
+            setInputValue('');
         }
     };
+
     const handleLogout = () => {
-        setUser(null);
-        localStorage.setItem("user", null);
-        Navigate('/login');
+      setUser(null);
+      localStorage.setItem("user", null);
+      navigate("/login");
+    };
+    let u = null;
+    try {
+      const storedUser = localStorage.getItem('user');
+      u = storedUser ? JSON.parse(storedUser) : null;
+    } catch (error) {
+      console.error("Error parsing user data from localStorage:", error);
+      u = null; 
     }
-    const handleClickOutside = (event) => {
-        setHovered(false);
-      };
-    useEffect(() => {
-        // Add global click listener when the card is visible
-        if (isHovered) {
-          document.addEventListener('click', handleClickOutside);
-        }
-    
-        // Cleanup listener when the component unmounts or visibility changes
-        return () => {
-          document.removeEventListener('click', handleClickOutside);
-        };
-      }, [isHovered]);
     return (
         <div className="chatbot-container">
-            {/* Sidebar showing query history */}
-            <div className="sidebar">
-                <h3>Previous Queries</h3>
-                <ul>
-                    {queryHistory.map((q, index) => (
-                        <li key={index}>{q}</li>
-                    ))}
-                </ul>
-            </div>
-            <div className="h1-user" onMouseEnter={() => setHovered(true)} /*onMouseLeave={() => setHovered(false)}*/>
-            {props.user ?
-            <h2 className="user">{ props.user.charAt(0).toUpperCase() }</h2>
-            :
-        <nav>
-          <div>
-            <Link to="/login" className="login-link">Log in</Link>
-          </div>
-          <div>
-            <Link to="/signup" className="signup-link">Sign up</Link>
-          </div>
-        </nav>
-        }
-            </div>
-            {/* Main chat interface */}
-            <div className="chatbox">
-                <div className="search-bar">
-                    <input
-                        type="text"
-                        placeholder="Type your query here..."
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                    />
-                    <button onClick={handleSearch}>Go</button>
+            {/* Sidebar */}
+            <div
+                className={`sidebar ${isSidebarOpen ? 'open' : ''}`}
+                onMouseEnter={() => setIsSidebarOpen(true)}
+                onMouseLeave={() => setIsSidebarOpen(false)}
+            >
+                <div className="sidebar-header">
+                    <h2>Chat History</h2>
+                    <div className="sidebar-buttons">
+                        <button
+                            onClick={() => {
+                                setMessages([]);
+                                setInputValue('');
+                            }}
+                            title="Start New Chat"
+                        >
+                            ➕
+                        </button>
+                    </div>
                 </div>
-                {response && <div className="response">{response}</div>}
+                <div className="chat-history">
+                    {chatHistory.map((item, index) => (
+                        <div key={index} className="history-item">
+                            {item}
+                        </div>
+                    ))}
+                </div>
             </div>
-            {
-                isHovered ? 
-                <div
-                style={{
-                    position: 'absolute',
-                    top: '50px', 
-                    right: '16px',
-                    transform: 'translateX(-50%)',
-                    backgroundColor: 'white',
-                    border: '1px solid #ccc',
-                    borderRadius: '5px',
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                    padding: '10px',
-                    zIndex: 10,
-                  }}
-                  >
-                    {/* <h2>{ user }</h2> */}
-                    <button
-            style={{
-              padding: '0px 10px',
-               backgroundColor: 'white',
-              color: 'black',
-              border: 'none',
-              borderRadius: '3px',
-              cursor: 'pointer',
-              fontFamily: 'Arial',
-              display: 'flex',
-              fontSize: '15px',
-              fontStyle: 'bold'
-            }}
-            onClick={handleLogout}
-          >
-            <img src="https://static.vecteezy.com/system/resources/previews/016/451/134/original/logout-icon-sign-vector.jpg" style={{"width": "25px", "height": "21px", "position": "relative", "bottom": "1px", "right": "10px"}}/>
-            <strong>Log out</strong>
-          </button>
-                </div> 
-                : <div> </div>
-            }
+
+            {/* Main Chat Area */}
+            <div className={`chat-area ${isSidebarOpen ? 'sidebar-open' : ''}`}>
+                {/* User Dropdown */}
+                {u ?
+                (<div className="user-area">
+                    <div
+                        className="user-icon"
+                        onMouseEnter={() => setIsUserDropdownOpen(true)}
+                        onMouseLeave={() => setIsUserDropdownOpen(false)}
+                        >
+                        👤
+                        {isUserDropdownOpen && (
+                          <div className="user-dropdown">
+                                <button onClick={handleLogout}>Logout</button> {/* Logout Button */}
+                            </div>
+                        )}
+                    </div>
+                </div>)
+                : 
+                (<nav className="nav-links">
+               <span>
+                 <Link to="/login" className="login-link">
+               Log in
+                </Link>
+          </span>
+           <span>
+            <Link to="/signup" className="signup-link">
+             Sign up
+             </Link>
+           </span>
+                    </nav>)
+                  }
+
+                {/* Messages Area */}
+                <div className="messages-container">
+                    {messages.map((msg, index) => (
+                        <div
+                            key={index}
+                            className={`message ${msg.type}`}
+                        >
+                            {msg.text}
+                        </div>
+                    ))}
+                </div>
+
+                {/* Input Area */}
+                <div className="input-area">
+                    <div className="search-wrapper">
+                        <textarea
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                            onInput={(e) => {
+                                e.target.style.height = "50px"; // Reset height
+                                e.target.style.height = `${e.target.scrollHeight}px`; // Adjust height dynamically
+                            }}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" && !e.shiftKey) {
+                                    e.preventDefault(); // Prevent newline creation
+                                    handleSend(); // Call send function
+                                }
+                            }}
+                            placeholder="Type your message..."
+                        />
+                        <button
+                            className="send-button"
+                            onClick={handleSend}
+                        >
+                            ➤
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
+
 export default Chatbot;

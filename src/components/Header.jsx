@@ -4,14 +4,23 @@ import './Header.css';
 import AppContext from '../AppContext';
 const Header = () => {
   const { user } = useContext(AppContext)  
-  const [option, setOption] = useState(() => {
-    if (user === null) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  });
+  // const [option, setOption] = useState(() => {
+  //   if (user === " ") {
+  //     return true;
+  //   }
+  //   else {
+  //     return false;
+  //   }
+  // });
+  let u = null;
+  try {
+    const storedUser = localStorage.getItem('user');
+    u = storedUser ? JSON.parse(storedUser) : null;
+  } catch (error) {
+    console.error("Error parsing user data from localStorage:", error);
+    u = null; 
+  }
+
   return (
 	<header>
 	  <div className="images-div">
@@ -29,16 +38,16 @@ const Header = () => {
 	  </div>
 	  <div>
 	</div>
-  {option ?
-        <nav className="navbar">
+  {!u ?
+        (<nav className="navbar">
           <div>
             <Link to="/login" className="login-link">Log in</Link>
           </div>
           <div>
             <Link to="/signup" className="signup-link">Sign up</Link>
           </div>
-    </nav>
-    : <nav className="navbar"><img src="http://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" width="50" height="50" className="profile-image"/> <span className="username">{ user }</span></nav>}
+    </nav>)
+    : (<nav className="navbar"><img src="http://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" width="50" height="50" className="profile-image"/> <span className="username">{ user }</span></nav>)}
 	</header>
   )
 }
