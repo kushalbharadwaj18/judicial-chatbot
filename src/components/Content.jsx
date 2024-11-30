@@ -1,5 +1,6 @@
 import React from "react";
 import './Content.css';
+import FAQList from "./FAQList";
 const Content = () => {
   return (
     <main>
@@ -31,6 +32,7 @@ const Content = () => {
         training to the Judicial Officers of the country. The functions of
         Department of Justice are given in Allocation of Business (Rules), 1961
       </p>
+      <FAQList />
     <div className="additional-images">
       <div className="additional-image">
         <img src="https://cdnbbsr.s3waas.gov.in/s35d6646aad9bcc0be55b2c82f69750387/uploads/bfi_thumb/2023062719-qnwyshxgesh19eti5lalf20xjoforz4lwp22koh71k.png" />
