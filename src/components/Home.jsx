@@ -6,7 +6,7 @@ import ChatbotIcon from './ChatbotIcon';
 import Content from './Content';
 const Home = () => {
   return (
-	<div>
+	<div style={{"backgroundColor": "white"}}>
 	   <Header />
 	   <SlidingImages />
 	   <Content />

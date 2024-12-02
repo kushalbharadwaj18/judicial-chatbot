@@ -12,17 +12,32 @@ const Chatbot = () => {
     const { user, setUser } = useContext(AppContext);
     const navigate = useNavigate(); // Initialize the navigate function
 
-    const handleSend = () => {
+    const handleSend = async () => {
         if (inputValue.trim()) {
             const newMessages = [
                 ...messages,
                 { type: 'user', text: inputValue },
-                { type: 'bot', text: `Response to: ${inputValue}` }
+                { type: 'bot', text: 'Waiting for response...' } 
             ];
-
             setMessages(newMessages);
-            setChatHistory([...chatHistory, inputValue]);
+            setChatHistory([...chatHistory, inputValue]); 
             setInputValue('');
+            try {
+                const response = await fetch(' https://e610-34-143-213-194.ngrok-free.app/query', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query: inputValue }),
+                });
+                const data = await response.json();
+                const updatedMessages = [...newMessages];
+                updatedMessages[updatedMessages.length - 1] = { type: 'bot', text: data.answer };
+                setMessages(updatedMessages);
+            } catch (error) {
+                console.error('Error fetching the bot response:', error);
+                const updatedMessages = [...newMessages];
+                updatedMessages[updatedMessages.length - 1] = { type: 'bot', text: 'Failed to fetch response. Try again!' };
+                setMessages(updatedMessages);
+            }
         }
     };
 

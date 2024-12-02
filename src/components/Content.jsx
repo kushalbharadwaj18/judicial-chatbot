@@ -5,6 +5,7 @@ const Content = () => {
   return (
     <main>
 	  <h2 className="heading">About Department</h2>
+     <div className="content">
       <p className="about-content">
         About Department As per the Allocation of Business (Rules), 1961,
         Department of Justice is a part of Ministry of Law & Justice, Government
@@ -32,6 +33,21 @@ const Content = () => {
         training to the Judicial Officers of the country. The functions of
         Department of Justice are given in Allocation of Business (Rules), 1961
       </p>
+      <div className="minister-info">
+        <img
+          src="https://cdnbbsr.s3waas.gov.in/s35d6646aad9bcc0be55b2c82f69750387/uploads/2023/05/2023051977.png" // Replace with actual image URL
+          alt="Shri Arjun Ram Meghwal"
+          className="minister-image"
+        />
+        <h4>Shri Arjun Ram Meghwal</h4>
+        <p>
+          Hon'ble Minister of State, Ministry of Law and Justice
+          <br />
+          (Independent Charge)
+        </p>
+        <a href="/">Profile</a>
+      </div>
+     </div>
       <FAQList />
     <div className="additional-images">
       <div className="additional-image">

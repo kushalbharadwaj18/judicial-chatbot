@@ -3,10 +3,16 @@
 	text-align: center;
 	margin-top: 50px;
 }
+.content {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	/* flex-wrap: wrap; */
+}
 .about-content {
 	color: rgb(112, 107, 107);
 	font-family: sans-serif;
-	margin: auto;
+	/* margin: auto; */
 	padding: 10px 10px;
 	line-height: 1.8;
 }
@@ -26,7 +32,36 @@
 	  grid-template-columns: 1fr 1fr; /* 2 columns */
 	}
   }
+  .minister-info {
+	text-align: center;
+	/* width: 50%; */
+	border: 1px solid lightgrey;
+	padding: 30px 20px;
+	margin-right: 35px;
+	line-height: 1.4;
+	background-color: #F3F3F3;
+  }
   
+  .minister-image {
+	width: 170px;
+	height: 170px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+  }
+  
+  .profile-button {
+	margin-top: 10px;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+  }
+  
+  .profile-button:hover {
+	background-color: #0056b3;
+  }
   /* Larger devices (e.g., desktops) */
   /* @media (min-width: 1024px) {
 	.additional-images {
