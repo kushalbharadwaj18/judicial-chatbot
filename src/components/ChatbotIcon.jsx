@@ -1,16 +1,52 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './ChatbotIcon.css';
 const Chatbot = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
+  const handleChatbotClick = () => {
+     navigate('/chatbot');
+  }
   return (
-	<div>
-	   {/* <p className="chatbot-icon"> */}
-	    <div>
-			<p className="chatbot-text">Ask&nbsp;Bot</p>
-			<Link to="/chatbot"><img draggable="false" src="https://tse4.mm.bing.net/th?id=OIP.Jfe9OW2n6iPF9PjCsW1prgHaHa&pid=Api&P=0&h=180" className="chatbot-icon"/></Link>
-		</div>
-	   {/* </p>  */}
-	</div>
+	<div 
+      className="doj-chatbot-container"
+      onClick={handleChatbotClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      role="button"
+      tabIndex={0}
+    >
+      <svg 
+        className="doj-chatbot-icon" 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 100 100"
+      >
+        {/* Circular Background */}
+        <circle cx="50" cy="50" r="45" fill="#002D62"/>
+        
+        {/* Justice Scales */}
+        <path 
+          d="M30 40 L50 55 L70 40" 
+          fill="none" 
+          stroke="#FFFFFF" 
+          strokeWidth="4" 
+          strokeLinecap="round"
+        />
+        
+        {/* Chat Dots */}
+        <circle cx="40" cy="65" r="4" fill="#FFFFFF"/>
+        <circle cx="50" cy="65" r="4" fill="#FFFFFF"/>
+        <circle cx="60" cy="65" r="4" fill="#FFFFFF"/>
+      </svg>
+
+      {/* Hover Tooltip */}
+      {isHovered && (
+        <div className="doj-chatbot-tooltip">
+          Need Help? Ask bot
+        </div>
+      )}
+    </div>
+
   )
 }
 export default Chatbot

@@ -4,9 +4,9 @@ import FAQList from "./FAQList";
 const Content = () => {
   return (
     <main>
-	  <h2 className="heading">About Department</h2>
+	  <h2 className="heading text-2xl font-bold">About Department</h2>
      <div className="content">
-      <p className="about-content">
+      <p className="about-content ml-5">
         About Department As per the Allocation of Business (Rules), 1961,
         Department of Justice is a part of Ministry of Law & Justice, Government
         of India. It is one of the oldest Ministries of the Government of India.
@@ -39,13 +39,13 @@ const Content = () => {
           alt="Shri Arjun Ram Meghwal"
           className="minister-image"
         />
-        <h4>Shri Arjun Ram Meghwal</h4>
-        <p>
-          Hon'ble Minister of State, Ministry of Law and Justice
+        <h4 class="text-1xl font-bold">Shri&#160;Arjun&#160;Ram Meghwal</h4>
+        <p class="text-1xl">
+          Hon'ble&#160;Minister&#160;of&#160;State, Ministry of Law and Justice
           <br />
           (Independent Charge)
         </p>
-        <a href="/">Profile</a>
+        <a href="https://mpa.gov.in/about-us/meet-the-ministers-or-secretary/ministers/shri-arjun-ram-meghawal">Profile</a>
       </div>
      </div>
       <FAQList />

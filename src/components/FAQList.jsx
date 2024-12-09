@@ -59,7 +59,7 @@ const FAQItem = ({ question, answer }) => {
 const FAQList = () => {
   return (
     <div className="faq-list">
-      <h2>Frequently Asked Questions</h2>
+      <h2 className="text-center text-2xl font-bold">Frequently Asked Questions</h2>
       {FAQs.map((faq, index) => (
         <FAQItem key={index} question={faq.question} answer={faq.answer} />
       ))}

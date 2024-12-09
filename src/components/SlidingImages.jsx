@@ -25,7 +25,7 @@ const SlidingImages = () => {
       <Slider {...settings}>
         {images.map((img, index) => (
           <div key={index}>
-            <img src={img} alt={`Slide ${index}`} style={{ width: "100%" }} />
+            <img src={img} alt={`Slide ${index}`} style={{ backgroundColor: "black", width: "100%" }} />
           </div>
         ))}
       </Slider>

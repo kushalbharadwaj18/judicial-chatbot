@@ -78,9 +78,8 @@ body {
     text-decoration: none;
     border: 1px solid white;
     padding: 7px 20px;
-    border-radius: 50px;
+    border-radius: 30px;
     color: white;
-    /* background-color: rgb(154, 152, 152); */
     background-color: black;
     font-weight: bold;
 }
@@ -89,10 +88,9 @@ body {
     text-decoration: none;
     border: 1px solid lightgrey;
     padding: 7px 20px;
-    border-radius: 50px;
+    border-radius: 30px;
     color: black;
     background-color: white;
-    /* background-color: rgb(247, 127, 8); */
     font-weight: bold;
 }
 .profile-image {

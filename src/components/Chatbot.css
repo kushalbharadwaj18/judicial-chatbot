@@ -134,7 +134,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: #dbe0ec; /* White background for messages area */
+    /* background-color: #dbe0ec; */
     border-radius: 10px;
     margin: 10px 243px;
 }
@@ -161,8 +161,8 @@
 
 .message.bot {
     align-self: flex-start;
-    background-color: #2d74d6; /* Light green background for bot responses */
-    color: #ffffff; /* Bot message text color */
+    background-color: #2d74d6;
+    color: #ffffff; 
     margin-right: auto;
     text-align: left;
 }
@@ -174,7 +174,8 @@
     justify-content: center;
     padding: 15px;
     border-top: 1px solid #ddd;
-    background: #f4f4f4; /* Light gray for input area */
+    /* background: #f4f4f4; */
+    /* Light gray for input area */
 }
 
 .search-wrapper {
@@ -187,11 +188,11 @@
     min-height: 50px; /* Minimum height */
     max-height: 50px; /* Optional: Limit maximum height */
     padding: 12px 60px 12px 15px; /* Padding adjustments */
-    border: 1px solid #ccc;
-    border-radius: 25px;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 25px; */
     outline: none;
-    background-color: #ffffff;
-    color: #000000;
+    /* background-color: #ffffff; */
+    /* color: #000000; */
     resize: none; /* Prevent manual resizing */
     overflow: hidden; /* Hide scrollbars */
     font-size: 1rem;
@@ -210,7 +211,7 @@
     right: 15px; /* Keep some space between the button and the edge */
     top: 50%;
     transform: translateY(-50%);
-    background: #007bff;
+    /* background: #007bff; */
     color: white;
     border: none;
     border-radius: 50%;
@@ -242,7 +243,7 @@ nav {
     text-decoration: none;
     border: 1px solid white;
     padding: 7px 20px;
-    border-radius: 50px;
+    border-radius: 5px;
     color: white;
     background-color: black;
     font-weight: bold;
@@ -252,7 +253,7 @@ nav {
     text-decoration: none;
     border: 1px solid lightgrey;
     padding: 7px 20px;
-    border-radius: 50px;
+    border-radius: 5px;
     color: black;
     background-color: white;
     font-weight: bold;

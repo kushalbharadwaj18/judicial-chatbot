@@ -31,10 +31,16 @@
 	.additional-images {
 	  grid-template-columns: 1fr 1fr; /* 2 columns */
 	}
+	.content {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-wrap: wrap;
+	}
   }
   .minister-info {
 	text-align: center;
-	/* width: 50%; */
+	width: 50%;
 	border: 1px solid lightgrey;
 	padding: 30px 20px;
 	margin-right: 35px;
