@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import "./Style.css";
 import { Eye, EyeOff } from 'lucide-react';
-const Signup = () => {
+const Signup = (props) => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible1, setPasswordVisible1] = useState(false);
@@ -19,6 +19,9 @@ const Signup = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  if (props.user) {
+    navigate("/");
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     setNameError("");

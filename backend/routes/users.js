@@ -34,7 +34,7 @@ router.post('/login', async (req, res) => {
 		}
 		const token = jwt.sign({
 			id: data._id,
-			name: data.email
+			name: data.name
 		}, process.env.SECRET_KEY,
 	    { expiresIn: '1d' });
 		res.status(200).send({ name: data.name, token: token });
@@ -44,7 +44,7 @@ router.post('/login', async (req, res) => {
 });
 router.post('/query', verifyToken, async (req, res) => {
     try {
-        console.log(req.body);
+        // console.log(req.body);
 	}
 	catch (error) {
         console.log(error);

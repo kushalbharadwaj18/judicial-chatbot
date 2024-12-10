@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AppContext from "../AppContext";
 import { Eye, EyeOff } from "lucide-react";
 import "./Style.css";
-const Login = () => {
+const Login = (props) => {
   const { setUser } = useContext(AppContext);
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -11,6 +11,10 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const token = localStorage.getItem('token');
+  if (token) {
+    return navigate("/");
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     setEmailError("");

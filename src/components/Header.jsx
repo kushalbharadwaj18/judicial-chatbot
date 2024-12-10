@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import AppContext from '../AppContext';
-import * as jwtDecode from 'jwt-decode';
+import { decodeToken } from './JwtDecode';
 const Header = () => {
-  const { user } = useContext(AppContext)  
+  // const { user } = useContext(AppContext)  
   // const [option, setOption] = useState(() => {
   //   if (user === " ") {
   //     return true;
@@ -21,20 +21,17 @@ const Header = () => {
   //   console.error("Error parsing user data from localStorage:", error);
   //   u = null; 
   // }
-  const [u, setU] = useState(null);
-  const token = localStorage.getItem('token');
-  if (token) {
-      try {
-        const decoded = jwtDecode(token);
-        const username = decoded.name;
-        console.log(username);
-        setU(username);
-      }
-      catch(error) {
-        console.error('Invalid Token', error);
-      }
-  }
-
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const token = localStorage.getItem('token'); // Retrieve token from localStorage
+    if (token) {
+        const decoded = decodeToken(token);
+        if (decoded) {
+            setUser(decoded); // Store decoded data in state
+        }
+    }
+  }, []);
+  console.log(user);
   return (
 	<header>
 	  <div className="images-div">
@@ -52,7 +49,7 @@ const Header = () => {
 	  </div>
 	  <div>
 	</div>
-  {u == null ?
+  {!user ?
         (<nav className="navbar">
           <div>
             <Link to="/login" className="login-link">Log in</Link>
@@ -61,7 +58,7 @@ const Header = () => {
             <Link to="/signup" className="signup-link">Sign up</Link>
           </div>
     </nav>)
-    : (<nav className="navbar"><img src="http://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" width="50" height="50" className="profile-image"/> <span className="username">{ u }</span></nav>)}
+    : (<nav className="navbar"><img src="http://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" width="50" height="50" className="profile-image"/> <span className="username">{ user.name }</span></nav>)}
 	</header>
   )
 }
