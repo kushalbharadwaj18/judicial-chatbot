@@ -113,7 +113,7 @@
 }
 
 .user-dropdown button {
-    padding: 10px;
+    padding: 10px 25px;
     width: 100%;
     background: none;
     border: none;
@@ -123,7 +123,7 @@
 }
 
 .user-dropdown button:hover {
-    background-color: #837b7b;
+    /* background-color: #837b7b; */
 }
 
 /* Messages Container */
@@ -138,7 +138,16 @@
     border-radius: 10px;
     margin: 10px 243px;
 }
-
+.messages-container {
+    overflow: auto; /* Allow scrolling */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE */
+  }
+  
+  .messages-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome, Safari, and Edge */
+  }
+  
 .message {
     max-width: 500px; /* Fixed width for both query and response */
     /*width: 100%;  Ensure it spans the available width */
@@ -151,7 +160,7 @@
     display: inline-block;
 }
 
-.message.user {
+.message.query {
     align-self: flex-end;
     background-color: #e9f7df; /* Light green background for bot responses */
     color: #1a1a1a; /* User message text color */
@@ -159,7 +168,7 @@
     text-align: left;
 }
 
-.message.bot {
+.message.answer {
     align-self: flex-start;
     background-color: #2d74d6;
     color: #ffffff; 
@@ -221,9 +230,9 @@
     height: 40px;
 }
 
-.send-button:hover {
+/* .send-button:hover {
     background-color: #0056b3;
-}
+} */
 
 nav {
     padding: 10px 10px;
@@ -234,27 +243,27 @@ nav {
 .nav-links {
     padding: 20px 0px;
     position: absolute;
-    right: 20px;
+    right: 0px;
     top: 5px;
     cursor: pointer;
 }
 .login-link {
     margin-left: 20px;
     text-decoration: none;
-    border: 1px solid white;
+    border: 1px solid rgb(120, 120, 232);
     padding: 7px 20px;
     border-radius: 5px;
     color: white;
-    background-color: black;
+    background-color: rgb(120, 120, 232);
     font-weight: bold;
 }
 .signup-link {
     margin-left: 20px;
     text-decoration: none;
-    border: 1px solid lightgrey;
+    /* border: 1px solid lightgrey; */
     padding: 7px 20px;
     border-radius: 5px;
-    color: black;
-    background-color: white;
+    /* color: black; */
+    background-color: white; 
     font-weight: bold;
 }

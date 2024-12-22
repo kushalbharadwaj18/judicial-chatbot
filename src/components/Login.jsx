@@ -2,10 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AppContext from "../AppContext";
 import { Eye, EyeOff } from "lucide-react";
+import Alert from './Alert';
 import "./Style.css";
 const Login = (props) => {
   const { setUser } = useContext(AppContext);
   const navigate = useNavigate();
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertType, setAlertType] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,7 +41,9 @@ const Login = (props) => {
       });
       const data = await response.json();
       if (!response.ok) {
-        alert(data.message);
+        setAlertMessage(data.message);
+        setAlertType('error');  
+        setTimeout(() => setAlertMessage(''), 3000);
       } else {
         localStorage.setItem("token", data.token);
         localStorage.setItem("name", data.name);
@@ -63,6 +68,11 @@ const Login = (props) => {
         <div className="absolute top-20 left-20 w-64 h-64 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-64 h-64 bg-pink-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
       </div> */}
+      <Alert
+        message={alertMessage}
+        type={alertType}
+        onClose={() => setAlertMessage('')}
+      />
       <div className="form-box relative z-10 w-full max-w-md bg-[#0a001a] border border-purple-500/30 rounded-2xl p-8">
         <h2
           style={{ color: "white" }}

@@ -7,8 +7,13 @@ import React, { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import "./Style.css";
 import { Eye, EyeOff } from 'lucide-react';
+import { SnackbarProvider, useSnackbar } from 'notistack';
+import Alert from './Alert';
+import "./Style.css";
 const Signup = (props) => {
   const navigate = useNavigate();
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertType, setAlertType] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible1, setPasswordVisible1] = useState(false);
   const [name, setName] = useState("");
@@ -41,6 +46,10 @@ const Signup = (props) => {
       setPasswordError("Password is required.");
       valid = false;
     }
+    if (password.length < 8) {
+      setPasswordError("Password should have minimum 8 characters");
+      valid = false;
+    }
     if (password !== confirmPassword) {
       setConfirmPasswordError("Passwords do not match.");
       valid = false;
@@ -53,12 +62,17 @@ const Signup = (props) => {
           'Content-Type': 'application/json'
         }
       });
+      const data = await response.json();
       if (!response.ok) {
-        const data = await response.json();
-        alert(data.message);
+        setAlertMessage(data.message);
+        setAlertType('error');
+        setTimeout(() => setAlertMessage(''), 3000);
       }
       else {
-        navigate('/login');
+        setAlertMessage(data.message);
+        setAlertType('success');
+        setTimeout(() => setAlertMessage(''), 3000);
+        setTimeout(() => navigate('/login'), 3000);
       }
     }
   };
@@ -70,7 +84,12 @@ const Signup = (props) => {
         <div className="absolute top-20 left-20 w-64 h-64 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-64 h-64 bg-pink-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
       </div> */}
-      <div className="form-box relative z-10 w-full max-w-md bg-[#0a001a] border border-purple-500/30 rounded-2xl p-8">
+      <Alert
+        message={alertMessage}
+        type={alertType}
+        onClose={() => setAlertMessage('')}
+      />
+      <div className="form-box relative z-10 w-full max-w-md bg-[#0a001a] border border-purple-500/30 rounded-2xl p-8" style={{"zIndex": "1"}}>
         <h2 style={{ color: "white" }} className="text-3xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 animate-text">Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-box mt-4 relative">

@@ -1,6 +1,4 @@
-@media (min-width: 600px) {	
-	/* General Styles */
-/* General Styles */
+/* @media (min-width: 600px) {
 * {
     margin: 0;
     padding: 0;
@@ -93,6 +91,453 @@ body {
     background-color: white;
     font-weight: bold;
 }
+.profile-image {
+    margin-right: 10px;
+}
+.username {
+    font-weight: bold;
+
+    font-family: sans-serif;
+}
+
+@media (max-width: 768px) {
+    
+    .top-bar {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .header-title h1 {
+        font-size: 20px;
+    }
+
+    .header-title p {
+        font-size: 14px;
+    }
+
+    .header-icons {
+        margin-top: 10px;
+    }
+
+
+    .navbar ul {
+        flex-direction: column;
+        text-align: center;
+        padding: 0;
+    }
+
+    .navbar ul li {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .navbar ul li a {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .dropdown {
+        position: static;
+        width: 100%;
+        background-color: #ffa733;
+    }
+}
+
+@media (max-width: 480px) {
+ 
+    .logo {
+        width: 40px;
+    }
+
+    .header-title h1 {
+        font-size: 18px;
+    }
+
+    .header-title p {
+        font-size: 12px;
+    }
+
+    .navbar ul li a {
+        font-size: 14px;
+    }
+    
+    .header-icons button {
+        font-size: 18px;
+    }
+
+    .dropdown li a {
+        font-size: 14px;
+    }
+}
+
+
+	.images-div {
+		display: flex;
+		justify-content: space-between;
+		padding: 20px;
+	}
+}
+@media (min-width: 0px) and (max-width: 600px) {
+	.web-images {
+		display: none;
+	}
+}
+.image-title {
+	font-family: Arial;
+	margin-left: 10px;
+	margin-top: 15px;
+}
+.embelem-image {
+	display: flex;
+} 
+header {
+	background-color: white;
+} */
+
+
+
+
+@media (min-width: 600px) {	
+	/* General Styles */
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.header {
+    width: 100%;
+    background-color: #fff;
+}
+
+.top-bar {
+    background-color: #e7e7e7;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    color: #333;
+    font-size: 14px;
+}
+
+.language-toggle {
+    cursor: pointer;
+    color: #000;
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+.header-title h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #000;
+}
+
+.header-title p {
+    font-size: 16px;
+    color: #666;
+}
+
+.header-icons {
+    display: flex;
+}
+
+.header-icons button {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.navbar {
+    background-color: #f7c948;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+}.right-links {
+    display: flex; /* Aligns the right-side links in a row */
+}
+
+.home-link {
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 7px 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    margin-left: 40px; /* Space between right-side links */
+    transition: background-color 0.3s, color 0.3s;
+   
+}
+/* Existing styles for the main link */
+.administrationofjustice-link {
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 7px 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    margin-left: 40px;
+    transition: background-color 0.3s, color 0.3s;
+}
+/* Dropdown Container Styling */
+.dropdown-container {
+    position: relative; /* For dropdown positioning */
+    display: inline-block; /* Align with other navbar items */
+}
+
+/* Dropdown Toggle Button */
+.administrationofjustice-link {
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 7px 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    margin-left: 40px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+
+/* Dropdown Toggle Hover Effect */
+.nyayabandhu-link:hover,
+.accesstojustice-link:hover,
+.administrationofjustice-link:hover {
+    background-color: white;
+    color: white;
+}
+
+/* Dropdown Menu Styling */
+.sub-menu {
+    display: none; /* Hidden by default */
+    position: absolute; /* Positioned relative to the parent */
+    top: 100%; /* Below the dropdown toggle */
+    left: 0;
+    background-color:black;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 7px 20px;
+    z-index: 1000;
+    min-width: 200px; /* Set a consistent dropdown width */
+}
+
+/* Show Dropdown Menu on Hover */
+.dropdown-container:hover .sub-menu {
+    display: block; /* Show the dropdown menu */
+}
+
+/* Dropdown Menu Links */
+.sub-menu li a {
+    display: block;
+    text-decoration: none;
+    padding: 7px 20px;
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dropdown Menu Link Hover Effect */
+.sub-menu li a:hover {
+    background-color:white;
+    color:white;
+}
+
+ 
+
+
+
+
+/*.about-link {
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 7px 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    margin-left: 20px; /* Space between right-side links *//*
+    transition: background-color 0.3s, color 0.3s;
+}*/
+.about-link {
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 7px 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    margin-left: 40px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+/*.accesstojustice-link {
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 7px 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    margin-left: 40px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}*/
+/* About Link Styling */
+/*.about-link {
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 7px 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    margin-left: 20px; /* Space between links 
+    transition: background-color 0.3s, color 0.3s;
+    position: relative; /* For dropdown positioning 
+}*/
+/* About Link Hover Effect */
+.about-link:hover {
+    background-color:white;
+    color: black;
+}
+
+/* Dropdown Container Styling */
+.dropdown-container {
+    position: relative; /* For dropdown positioning */
+    display: inline-block; /* Align with other navbar items */
+}
+
+/* Dropdown Toggle Button */
+.dropdown-toggle {
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 2px 50px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    margin-left: 40px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+/* Dropdown Toggle Hover Effect */
+.dropdown-toggle:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Dropdown Menu Styling */
+.sub-menu {
+    display: none; /* Hidden by default */
+    position: absolute; /* Positioned relative to the parent */
+    top: 100%; /* Below the dropdown toggle */
+    left: 0;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 0;
+    z-index: 1000;
+    min-width: 200px; /* Set a consistent dropdown width */
+}
+
+/* Show Dropdown Menu on Hover */
+.dropdown-container:hover .sub-menu {
+    display: block; /* Show the dropdown menu */
+}
+
+/* Dropdown Menu Links */
+.sub-menu li a {
+    display: block;
+    text-decoration: none;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dropdown Menu Link Hover Effect */
+.sub-menu li a:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Access to Justice Link Styling */
+
+
+
+
+/*.about-link {
+    margin-left: 20px;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 7px 20px;
+    border-radius: 30px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+}*/
+.navbar {
+    background-color: #f7c948;
+    padding:1 rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: normal;
+}.left-links {
+    display: flex; /* Aligns the right-side links in a row */
+}
+.signup-link {
+    margin-right: 10px;
+    text-decoration: none;
+    border: 1px solid lightgrey;
+    padding: 7px 20px;
+    border-radius: 30px;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+}
+.login-link {
+    text-decoration: none;
+    border: 1px solid lightgrey;
+    padding: 7px 20px;
+    border-radius: 30px;
+    color:white;
+    background-color:black;
+    font-weight: bold;
+    margin-right: 10px; /* Space between left-side links */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
 .profile-image {
     margin-right: 10px;
 }

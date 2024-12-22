@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { SnackbarProvider, useSnackbar } from 'notistack';
 import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Chatbot from './components/Chatbot';
 import AppContext from './AppContext';
-import { decodeToken } from "./components/JwtDecode";
+import decodeToken from "./components/JwtDecode";
 function App() {
   // const [user, setUser] = useState(() => {
   //   const savedData = localStorage.getItem('user');
@@ -18,16 +19,23 @@ function App() {
   //   }
   // }, [user]);
   const [user, setUser] = useState(null);
+  const token = localStorage.getItem("token");
+  // Retrieve token from localStorage
   useEffect(() => {
-    const token = localStorage.getItem("token"); // Retrieve token from localStorage
     if (token) {
       const decoded = decodeToken(token);
       if (decoded) {
-        setUser(decoded); // Store decoded data in state
-      }
+      setUser(decoded); // Store decoded data in state
     }
-  }, []);
+    else {
+      console.warn('Invalid token detected, removing it from storage.');
+      localStorage.removeItem('token');
+      
+    }
+  }
+}, [])
   return (
+    <SnackbarProvider>
     <AppContext.Provider value={{ user, setUser }}>
       <BrowserRouter>
           <Routes>
@@ -38,6 +46,7 @@ function App() {
           </Routes>
       </BrowserRouter>
     </AppContext.Provider>
+    </SnackbarProvider>
   )
 }
 

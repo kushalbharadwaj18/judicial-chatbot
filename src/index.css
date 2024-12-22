@@ -556,7 +556,10 @@ video {
 .text-shadow-neon {
    text-shadow: 0 0 5px #8830da, 0 0 10px #802acf, 0 0 20px #a855f7, 0 0 30px #a855f7;
 }
-.box {
+/* .box {
   @apply bg-gradient-to-r from-violet-500 to-fuchsia-50;
 }
-  
+   */
+.box {
+  @apply bg-black;
+}
