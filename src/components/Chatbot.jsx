@@ -77,7 +77,7 @@ const Chatbot = () => {
       setIsEditing(false);
       if (recognitionRef.current) {
         recognitionRef.current.start();
-        setIsRecording(true);
+        setIsRecording(false);
       }
     } catch (error) {
       console.error("Error starting recording:", error);
